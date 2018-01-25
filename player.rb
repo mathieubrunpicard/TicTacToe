@@ -3,6 +3,7 @@ class Player
 
   @@player_instance = 0
   @@instance_collector = []
+
   attr_accessor :player_name
   attr_accessor :winning
   attr_accessor :symbol

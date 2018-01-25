@@ -24,66 +24,75 @@ class Board
       down_right]
     end
 
-#Loop to take out unproper number
-def input_filter(user_move)
-  while user_move < 0 || user_move > 9 || user_move.integer? == false
-    puts "Not a valid move"
-    puts "Where are you going to play ? [1-9]"
-    user_move = gets.chomp.to_i - 1
-  end
-  true
-end
 
 #Put on the player's sign on the designated case
-def sign_case(user_move, user_symbol)
+def sign_case(user_move)
 
-  while @board[user_move].status == "X" || @board[user_move].status == "O"
-    puts "Pay attention. This move has already been played"
-    puts "Try again"
-    user_move = gets.chomp.to_i - 1
+  input = [0, 1, 2, 3, 4, 5, 6 ,7, 8]
+  first_loop = false
+  second_loop = false
+  until first_loop && second_loop
+    until input.include? user_move
+      puts "Not correct"
+      puts "Try again"
+      user_move = gets.chomp.to_i - 1
+    end
+    first_loop = true
+    until  @board[user_move].status == ""
+      puts "Not correct"
+      puts "Try again"
+      user_move = gets.chomp.to_i - 1
+    end
+    second_loop = true
   end
-  true
+
+  user_move
 end
 
 def correct_input(user_move, user_symbol)
 
+  @board[user_move].status = user_symbol
 
-@board[user_move].status = user_symbol
 end
 
 def print_table
 
   puts ""
-  puts "                  " + @board[0].status + " | " + @board[1].status + " | " +  @board[2].status+ " |"
+  puts "                  " + @board[0].status + " | " + @board[1].status + " | " +  @board[2].status
   puts "                 -------------"
-  puts "                  " + @board[3].status + " | " + @board[4].status + " | " +  @board[5].status+ " |"
+  puts "                  " + @board[3].status + " | " + @board[4].status + " | " +  @board[5].status
   puts "                 -------------"
-  puts "                  " + @board[6].status + " | " + @board[7].status + " | " +  @board[8].status+ " |"
+  puts "                  " + @board[6].status + " | " + @board[7].status + " | " +  @board[8].status
   puts ""
 end
 
-def winning(player)
+  def winning(player)
 
-  wins_scenario = [
-  [0, 1, 2], [3, 4, 5], [6, 7, 8],  # <-- Horizontal wins
-  [0, 3, 6], [1, 4, 7], [2, 5, 8],  # <-- Vertical wins
-  [0, 4, 8], [2, 4, 6],             # <-- Diagonal wins
-]
-sum = 0
-wins_scenario.each do |scenario|
-  scenario.each do |i|
+      wins_scenario = [
+      [0, 1, 2], [3, 4, 5], [6, 7, 8],  # <-- Horizontal wins
+      [0, 3, 6], [1, 4, 7], [2, 5, 8],  # <-- Vertical wins
+      [0, 4, 8], [2, 4, 6],             # <-- Diagonal wins
+    ]
 
-   if @board[i].status == player.symbol
-    sum +=1
+    wins_scenario.each do |scenario|
+    sum = 0
+      scenario.each do |tile|
+
+        if @board[tile].status == player.symbol
+          sum += 1
+          if sum == 3
+
+            player.winning = true
+            return player.winning
+            break
+          else
+            player.winning = false
+          end
+        end
+      end
+    end
+
   end
 end
-end
 
-if sum == 3
-  player.winning = true
-else
-  player.winning = false
-end
 
-end
-end

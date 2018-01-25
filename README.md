@@ -1,7 +1,7 @@
 <h1>This a Tic Tac Toe game</h1>
 
 
-<img src="tic.svg" alt="tictactoe" height="42" width="42">
+<img src="tic.svg" alt="tictactoe" height="100" width="100">
 
 <h2>This game is played in the Terminal and is entirely coded in Ruby.</h2>
 <p>When you launch the game, you are asked to prompt the names of the players.</p>

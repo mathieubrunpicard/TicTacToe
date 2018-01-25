@@ -5,20 +5,22 @@ require_relative 'board'
 
 class Game
 
-  def initialize
-    board_instance = Board.new
-
-  #Create the two players
-  player_1 = Player.new("X")
-  player_2 = Player.new("O")
-
+  #This method creates the two players
   #Call the board_card_start method
   #And create the 9 cases of the games
-  board_instance.board_card_start
+  def initialize
+    board_instance = Board.new
+    player_1 = Player.new("X")
+    player_2 = Player.new("O")
+    puts "Welcolme #{player_1.player_name} & #{player_2.player_name}"
+    board_instance.board_card_start
+    board_instance.rules_of_the_game
   end
 
-def round
-  #Starting game
+  #This method contains everything that happen
+  #Each round of the game
+  def round
+
   9.times do |i|
 
     user_move = 0
@@ -43,6 +45,7 @@ def round
 
         puts "Congratulations " + l.player_name + ", you won."
         puts "\n-------------------------------------------------------"
+        puts "Game over"
         exit(l.winning)
       end
       i = i + 1
@@ -52,7 +55,7 @@ def round
 
     #If this is turn 9 and nobody won break the game
     break if i == 8 && player_1.winning == player_2.winning
-    end
+  end
 
 
     #Display ending message based on the result of the game
@@ -64,6 +67,9 @@ def round
 
   end
 end
+
+#Here we create an instance of the class Game
+#And launch the method round
 
 script = Game.new
 script.round

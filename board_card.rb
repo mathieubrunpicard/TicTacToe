@@ -12,6 +12,6 @@ class Board_card
 end
 
 
-#Ici une boucle qui parcoure chacun des élements
-#Pour vérifier si il y a 3 élements à la suite
+#Not much here, just a board_card class that define
+#The instances parameters
 

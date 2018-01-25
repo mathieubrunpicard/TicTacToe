@@ -1,4 +1,3 @@
-
 class Player
 
   @@player_instance = 0
@@ -16,13 +15,14 @@ class Player
     @@instance_collector << self
   end
 
+#This method asks the name of each players
   def asking_names
     puts "\n-------------------------------------------------------"
     puts "What is the name of Player #{@@player_instance} ?"
     player_name = gets.chomp
     return player_name
   end
-
+#This method return the instances of Player
   def self.offsprings
     @@instance_collector
   end

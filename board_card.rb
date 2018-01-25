@@ -9,6 +9,10 @@ class Board_card
     @@instance +=1
     @@children << self
   end
+
+  def self.children
+    @@children
+  end
 end
 
 

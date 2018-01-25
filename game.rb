@@ -17,7 +17,7 @@ class Game
     @board_instance.board_card_start
     @board_instance.rules_of_the_game
     puts "Have you read the rules ?"
-    puts "Press any key to continue"
+    puts "Press enter key to continue"
     gets.chomp
     system "clear"
   end
@@ -28,11 +28,10 @@ class Game
     user_move = 0
     i = 0
 
-    until Player.offsprings[0].winning || Player.offsprings[1].winning
+    until Player.offsprings[0].winning || Player.offsprings[1].winning || i > 8
       Player.offsprings.each do |l|
 
-        i = i + 1
-        puts "\n------------------ Round number #{i} ------------------"
+        puts "\n------------------ Round number #{i+1} --------------------"
 
         puts l.player_name + ", it's your turn."
         puts "Where are you going to play ? [1-9]"
@@ -50,36 +49,35 @@ class Game
 
           puts "Congratulations " + l.player_name + ", you won."
           puts "\n-------------------------------------------------------"
-
           finished_game = true
-
         end
 
 
 
     #If this is turn 9 and nobody won break the game
     #Display ending message based on the result of the game
-    if i == 9 && @player_1.winning == @player_2.winning
+    if i == 8 && @player_1.winning == @player_2.winning
       puts "\n-------------------------------------------------------"
       puts "It is a square. Nobody won"
       puts "\n-------------------------------------------------------"
       finished_game = true
-      break
     end
 
     if finished_game == true
       puts "Game over"
       puts "\n-------------------------------------------------------"
-      break
-    end
 
+    end
+    i = i + 1
+    break if finished_game == true
   end
 end
 end
 
 #Method to start the game again
 def play_again
-  puts "Do you want to play again ? [Y/N]"
+  puts "Do you want to play again ?"
+  puts "Press Y to continue or any other key to exit"
   user_input = gets.chomp
   if user_input == "Y"
   else

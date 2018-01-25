@@ -63,8 +63,8 @@ class Game
       puts "\n-------------------------------------------------------"
       puts "It is a square. Nobody won"
       puts "\n-------------------------------------------------------"
-      break
       finished_game = true
+      break
     end
 
     if finished_game == true

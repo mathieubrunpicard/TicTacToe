@@ -1,7 +1,7 @@
 <h1>This a Tic Tac Toe game</h1>
 
 
-<img src="tic.svg" alt="tictactoe">
+<img src="tic.svg" alt="tictactoe" height="42" width="42">
 
 <h2>This game is played in the Terminal and is entirely coded in Ruby.</h2>
 <p>When you launch the game, you are asked to prompt the names of the players.</p>
@@ -11,3 +11,4 @@
 <p>Press the `Y`key to do so.</p>
 
 <p>Have fun playing Tic Tac Toe</p>
+<p>To start the game execute the file ```game.rb``</p>

@@ -8,7 +8,8 @@
 <p>Then the rules will be briefly explained to you and the game can start.</p>
 
 <p>Also, at the end of the game, you will be asked if you want to play again.</p>
-<p>Press the ```Y``` key to do so.</p>
+<p>Press the "Y" key to do so.</p>
 
 <p>Have fun playing Tic Tac Toe</p>
-<p>To start the game execute the file ```game.rb```</p>
+<p>To start the game execute the file game.rb</p>
+<p>PS: if you do not have pry, type gem install pry</p>

@@ -20,6 +20,7 @@ class Game
     puts "Press enter key to continue"
     gets.chomp
     system "clear"
+
   end
 
   #This method contains everything that happen
@@ -86,6 +87,19 @@ def play_again
   user_input
 
 end
+
+def loop_game(instance, user_input)
+  while user_input == "Y"
+  Player.offsprings.each do |l|
+    l.winning = false
+  end
+  Board_card.children.each do |tile|
+    tile.status = ""
+  end
+  instance.round
+end
+
+end
 end
 
 #Here we create an instance of the class Game
@@ -93,13 +107,7 @@ end
 
 @script = Game.new
 @script.round
+@script.loop_game(@script, @script.play_again)
 
-while @script.play_again == "Y"
-  Player.offsprings.each do |l|
-    l.winning = false
-  end
-  Board_card.children.each do |tile|
-    tile.status = ""
-  end
-  @script.round
-end
+
+
